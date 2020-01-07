@@ -31,7 +31,9 @@
     -->
     <context id="sqlserverTables" targetRuntime="MyBatis3" >
         <!-- 4、生成的pojo，将implements Serializable -->
-        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+
+        </plugin>
 
         <!-- 5、设置是否自动生成注释 -->
         <commentGenerator>
