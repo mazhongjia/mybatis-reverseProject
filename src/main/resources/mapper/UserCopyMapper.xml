@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mybatis.mapper.UserCopyMapper">
+  <resultMap id="BaseResultMap" type="com.demo.mybatis.pojo.UserCopy">
+    <id column="id1" jdbcType="INTEGER" property="id1" />
+    <result column="name1" jdbcType="VARCHAR" property="name1" />
+    <result column="age1" jdbcType="INTEGER" property="age1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id1, name1, age1
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_copy
+    where id1 = #{id1,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_copy
+    where id1 = #{id1,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.demo.mybatis.pojo.UserCopy">
+    insert into user_copy (id1, name1, age1
+      )
+    values (#{id1,jdbcType=INTEGER}, #{name1,jdbcType=VARCHAR}, #{age1,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.mybatis.pojo.UserCopy">
+    insert into user_copy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id1 != null">
+        id1,
+      </if>
+      <if test="name1 != null">
+        name1,
+      </if>
+      <if test="age1 != null">
+        age1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id1 != null">
+        #{id1,jdbcType=INTEGER},
+      </if>
+      <if test="name1 != null">
+        #{name1,jdbcType=VARCHAR},
+      </if>
+      <if test="age1 != null">
+        #{age1,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.mybatis.pojo.UserCopy">
+    update user_copy
+    <set>
+      <if test="name1 != null">
+        name1 = #{name1,jdbcType=VARCHAR},
+      </if>
+      <if test="age1 != null">
+        age1 = #{age1,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id1 = #{id1,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.mybatis.pojo.UserCopy">
+    update user_copy
+    set name1 = #{name1,jdbcType=VARCHAR},
+      age1 = #{age1,jdbcType=INTEGER}
+    where id1 = #{id1,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -35,7 +35,7 @@ public class MybatisTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         SqlSession session = sqlSessionFactory.openSession();
 
-        User user = session.selectOne("selectByPrimaryKey", 1);
+        User user = session.selectOne("com.demo.mybatis.mapper.UserMapper.selectByPrimaryKey", 1);
         session.commit();
         logger.info(user.toString());
     }
