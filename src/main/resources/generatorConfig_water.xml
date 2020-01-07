@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_3_5.dtd">
+
+<generatorConfiguration>
+    <!--导入属性配置-->
+    <properties resource="datasource.properties"></properties>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置-->
+    <classPathEntry location="${db.driverLocation}"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection
+                driverClass="${db.driverClassName}"
+                connectionURL="${db.url}"
+                userId="${db.username}"
+                password="${db.password}">
+        </jdbcConnection>
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <javaTypeResolver type="mybatisGenerator.MyJavaTypeResolver">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
+            targetPackage     指定生成的model生成所在的包名
+            targetProject     指定在该项目下所在的路径
+        -->
+        <!--<javaModelGenerator targetPackage="com.kd.modelIncream.pojo" targetProject=".\src\main\java">-->
+        <javaModelGenerator targetPackage="com.kd.gdi.pojo" targetProject="./src/main/java">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否对model添加 构造函数 -->
+            <!--<property name="constructorBased" value="true"/>-->
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+
+        <!--mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
+        <!--<sqlMapGenerator targetPackage="mappersbak" targetProject=".\src\main\resources">-->
+        <sqlMapGenerator targetPackage="mappers" targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+                type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+                type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+                type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+        -->
+
+        <!--targetPackage：mapper接口dao生成的位置-->
+        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.kd.gdi.dao" targetProject=".\src\main\java">-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kd.gdi.dao" targetProject="./src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--<table tableName="company" domainObjectName="Company" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="link_conf" domainObjectName="Link_conf" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="measanalog" domainObjectName="Measanalog" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="measpoint" domainObjectName="Measpoint" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="windtower" domainObjectName="Windtower" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="pv_weath_station" domainObjectName="PvWeathStation" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="ner_generatingunit" domainObjectName="NerGeneratingunit" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <table tableName="st_conf" domainObjectName="StConf" enableCountByExample="false"
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="true"/>
+        </table>
+        <!--<table tableName="measure" domainObjectName="Measure" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="multisourcemeas" domainObjectName="Multisourcemeas" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="planformula" domainObjectName="Planformula" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="plandefine" domainObjectName="Plandefine" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="hydropoweracces" domainObjectName="Hydropoweracces" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="signal" domainObjectName="Signal" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="voltagelevel" domainObjectName="Voltagelevel" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="river" domainObjectName="River" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="riversystem" domainObjectName="Riversystem" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="substation" domainObjectName="Substation" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="hydrologicalstation" domainObjectName="Hydrologicalstation" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="smallhydrst" domainObjectName="Smallhydrst" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="hydpowerdam" domainObjectName="Hydpowerdam" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="hydpowergate" domainObjectName="Hydpowergate" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="subcontrolarea" domainObjectName="Subcontrolarea" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="basevoltage" domainObjectName="Basevoltage" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="hydrparcurve" domainObjectName="Hydrparcurve" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="hydrparcurvedata" domainObjectName="Hydrparcurvedata" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="navigationlock" domainObjectName="Navigationlock" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="limitsets" domainObjectName="Limitsets" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="distr_pv_station" domainObjectName="distrPvStation" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="formula_define" domainObjectName="formulaDefine" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="weatherstation" domainObjectName="Weatherstation" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="mainmeasmutisource" domainObjectName="Mainmeasmutisource" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="multisourcecode" domainObjectName="Multisourcecode" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="generatingunit" domainObjectName="Generatingunit" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="watershed" domainObjectName="Watershed" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="owner" domainObjectName="Owner" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="generationgroup" domainObjectName="Generationgroup" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="mappingaccess" domainObjectName="Mappingaccess" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="sg_dev_dclineend_c" domainObjectName="SgDevDclineendC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_generator_c" domainObjectName="SgDevGeneratorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_pwrtransfm_c" domainObjectName="SgDevPwrtransfmC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_seriescapacitor_c" domainObjectName="SgDevSeriescapacitorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntcapacitor_c" domainObjectName="SgDevShuntcapacitorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntreactor_c" domainObjectName="SgDevShuntreactorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_transfmwd_c" domainObjectName="SgDevTransfmwdC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dic_voltage_c" domainObjectName="SgDicVoltageC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_busbar_c" domainObjectName="SgDevBusbarC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_con_substation_b" domainObjectName="SgConSubstationB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="sg_sys_meas_c" domainObjectName="SgSysMeasC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="sg_con_substation_p" domainObjectName="SgConSubstationP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="sg_dev_acline_b" domainObjectName="SgDevAclineB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_acline_c" domainObjectName="SgDevAclineC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_acline_p" domainObjectName="SgDevAclineP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_aclineend_b" domainObjectName="SgDevAclineendB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_aclineend_c" domainObjectName="SgDevAclineendC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_breaker_b" domainObjectName="SgDevBreakerB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_breaker_c" domainObjectName="SgDevBreakerC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_busbar_b" domainObjectName="SgDevBusbarB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_contransfm_b" domainObjectName="SgDevContransfmB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_contransfm_c" domainObjectName="SgDevContransfmC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_contransfmwd_b" domainObjectName="SgDevContransfmwdB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_contransfmwd_c" domainObjectName="SgDevContransfmwdC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_convvalve_b" domainObjectName="SgDevConvvalveB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_convvalve_c" domainObjectName="SgDevConvvalveC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcbreaker_b" domainObjectName="SgDevDcbreakerB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcbreaker_c" domainObjectName="SgDevDcbreakerC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcbreaker_p" domainObjectName="SgDevDcbreakerP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcdis_b" domainObjectName="SgDevDcdisB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcdis_c" domainObjectName="SgDevDcdisC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcfilter_b" domainObjectName="SgDevDcfilterB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcfilter_c" domainObjectName="SgDevDcfilterC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcgrounddis_b" domainObjectName="SgDevDcgrounddisB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcgrounddis_c" domainObjectName="SgDevDcgrounddisC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcline_b" domainObjectName="SgDevDclineB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcline_c" domainObjectName="SgDevDclineC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dcline_p" domainObjectName="SgDevDclineP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dclineend_b" domainObjectName="SgDevDclineendB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dclineend_c" domainObjectName="SgDevDclineendC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dis_b" domainObjectName="SgDevDisB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_dis_c" domainObjectName="SgDevDisC" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_grounddis_b" domainObjectName="SgDevGrounddisB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_grounddis_c" domainObjectName="SgDevGrounddisC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_generator_b" domainObjectName="SgDevGeneratorB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_generator_c" domainObjectName="SgDevGeneratorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_generator_p" domainObjectName="SgDevGeneratorP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_pwrtransfm_b" domainObjectName="SgDevPwrtransfmB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_pwrtransfm_c" domainObjectName="SgDevPwrtransfmC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_pwrtransfm_p" domainObjectName="SgDevPwrtransfmP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_transfmwd_b" domainObjectName="SgDevTransfmwdB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_transfmwd_c" domainObjectName="SgDevTransfmwdC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntreactor_b" domainObjectName="SgDevShuntreactorB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntreactor_c" domainObjectName="SgDevShuntreactorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntreactor_p" domainObjectName="SgDevShuntreactorP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntcapacitor_b" domainObjectName="SgDevShuntcapacitorB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntcapacitor_c" domainObjectName="SgDevShuntcapacitorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_shuntcapacitor_p" domainObjectName="SgDevShuntcapacitorP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_seriescapacitor_b" domainObjectName="SgDevSeriescapacitorB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_seriescapacitor_c" domainObjectName="SgDevSeriescapacitorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_seriescapacitor_p" domainObjectName="SgDevSeriescapacitorP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_seriesreactor_b" domainObjectName="SgDevSeriesreactorB" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_seriesreactor_c" domainObjectName="SgDevSeriesreactorC" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sg_dev_seriesreactor_p" domainObjectName="SgDevSeriesreactorP" enableCountByExample="false"-->
+        <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false"></table>-->
+        <!-- geelynote mybatis插件的搭建 -->
+    </context>
+</generatorConfiguration>
